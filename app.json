@@ -1,19 +1,26 @@
 {
   "expo": {
-    "name": "App-Viszmo",
-    "slug": "App-Viszmo",
+    "name": "Viszmo",
+    "slug": "viszmo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "scheme": "viszmo",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#16304C"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.viszmo.mobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSSpeechRecognitionUsageDescription": "Used to check your spoken answers.",
+        "NSMicrophoneUsageDescription": "Used to record your spoken answers."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -21,10 +28,39 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.viszmo.mobile",
+      "permissions": [
+        "RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
+      "bundler": "metro",
+      "output": "static",
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-apple-authentication",
+      "expo-secure-store",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow Viszmo to access your microphone."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2d3fd726-e150-4276-bade-e297b364f064"
+      }
+    },
+    "owner": "viszmo-app"
   }
 }
